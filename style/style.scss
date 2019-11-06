@@ -1,0 +1,82 @@
+$main-bg: #141d26;
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    background: $main-bg;
+}
+
+.keyboard {
+    text-align: center;
+    margin: 0 auto;
+    width: 800px;
+    padding: 13px 0 13px 6px;
+    border-radius: 5px;
+    background: $main-bg;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    user-select: none;
+    transition: 0.5s;
+
+    &__key {
+        height: 45px;
+        width: 45px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 1.05rem;
+        outline: none;
+        cursor: pointer;
+        transition: ease 0.1s;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.038);   
+        }
+
+        &--big {
+            text-transform: capitalize;
+        }
+        &--wide {
+            width: 96px;
+        }
+        &--extra-wide {
+            width: 351px;
+        }
+        &--active {
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.038);   
+        }
+        &--active-push {
+            animation: 1s push;
+        }
+    }
+}
+
+.output {
+    display: block;
+    margin: 30px auto;
+
+    background: $main-bg;
+    color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    width: 800px;
+    height: 200px;
+    padding: 10px;
+}
+
+@keyframes push {
+    from {border-radius: 4px;}
+    50% {border-radius: 30px;}
+    to {border-radius: 4px;}
+}
