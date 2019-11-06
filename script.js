@@ -1,6 +1,6 @@
 window.addEventListener('load', init);
 document.addEventListener('keydown', print);
-document.addEventListener('keyup', pushKey => {
+document.addEventListener('keyup', () => {
     document.querySelectorAll('.keyboard__key').forEach(element => {
         if (element.innerText != 'CapsLock') element.classList.remove('keyboard__key--active');
     })
@@ -41,7 +41,7 @@ function init() {
             printVirtual(event.target.textContent);
             element.classList.remove('keyboard__key--active');
         })
-        element.addEventListener('mousedown', event => {
+        element.addEventListener('mousedown', () => {
             element.classList.add('keyboard__key--active');
         })
     });
@@ -57,7 +57,6 @@ function print(event) {
 }
 
 function printVirtual(text) {
-    console.log(text);
     let outText = document.querySelector('#output');
     switch (text) {
         case 'Tab':
@@ -72,13 +71,12 @@ function printVirtual(text) {
         case 'Backspace':
             outText.innerHTML = outText.innerHTML.substr(0, (outText.innerHTML).length - 1);
             break;
-        default:
+        default: {
             let char = keyValue.indexOf(text);
             if (char !== -1) {
-                console.log(char);
-                let pushKey = document.querySelector('.keyboard__key:nth-child(' + (char + 1) + ')');
                 document.querySelector('.output').innerHTML += String.fromCharCode(text.charCodeAt()).toLowerCase();
             }
-            break;
+            break; 
+        }
     }
 }
