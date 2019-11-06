@@ -55,3 +55,30 @@ function print(event) {
         document.querySelector('.output').innerHTML += String.fromCharCode(event.keyCode).toLowerCase();
     }
 }
+
+function printVirtual(text) {
+    console.log(text);
+    let outText = document.querySelector('#output');
+    switch (text) {
+        case 'Tab':
+            outText.innerHTML += '    ';
+            break;
+        case 'Space':
+            outText.innerHTML += ' ';
+            break;
+        case 'Del':
+            outText.innerHTML = '';
+            break;
+        case 'Backspace':
+            outText.innerHTML = outText.innerHTML.substr(0, (outText.innerHTML).length - 1);
+            break;
+        default:
+            let char = keyValue.indexOf(text);
+            if (char !== -1) {
+                console.log(char);
+                let pushKey = document.querySelector('.keyboard__key:nth-child(' + (char + 1) + ')');
+                document.querySelector('.output').innerHTML += String.fromCharCode(text.charCodeAt()).toLowerCase();
+            }
+            break;
+    }
+}
